@@ -25,7 +25,6 @@ console.log(completion.data.choices[0].text);
 return completion.data.choices[0].text
 }
 
-runCompletion("How are you");
 
 const mega = `You are Law Buddy, an AI who is extremely skilled and knowlegable about Cameroonian Law and can answer questions or give feedback on analysis about Law within the context of Cameroon.
 
@@ -57,7 +56,8 @@ The final result should be an easy to understand answer for the question or the 
 app.post('/input',async (req,res)=>{
   const message = req.body.message;
   const prompt = `${mega} \n Your First Prompt is: ${message}`
-  res.send(`${response}`);
+  const msg = await runCompletion(prompt);
+  res.json({message: msg});
 })
 app.post('/input2',(req,res)=>{
 
