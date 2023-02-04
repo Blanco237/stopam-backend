@@ -7,7 +7,6 @@ const { Configuration, OpenAIApi } = require("openai");
 
 
 app.use(express.json());
-app.use(express.urlencoded());
 app.use(cors());
 app.get('/',(req,res)=>{
   res.send("Hello")
@@ -57,12 +56,10 @@ The final result should be an easy to understand answer for the question or the 
 
 app.post('/input',async (req,res)=>{
   const message = req.body.message;
-  const prompt = `${mega} \n Your First Prompt is: ${message}`
+  const prompt = `${mega} 
+                  Your First Prompt is: ${message}`;
   const msg = await runCompletion(prompt);
   res.json({message: msg});
-})
-app.post('/input2',(req,res)=>{
-
 })
 
 
