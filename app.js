@@ -58,8 +58,10 @@ app.post('/input',async (req,res)=>{
   const message = req.body.message;
   const prompt = `${mega} 
                   Your First Prompt is: ${message}`;
+  console.log("Before asking")
   const msg = await runCompletion(prompt);
-  res.json({message: msg});
+  console.log("After asking");
+  res.status(200).json({message: msg});
 })
 
 
