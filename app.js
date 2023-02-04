@@ -2,11 +2,13 @@ const   express=require('express');
 const   app=express(); 
 const   hbs=require('express-handlebars');
 const   dotenv=require('dotenv').config();
+const cors = require('cors');
 const { Configuration, OpenAIApi } = require("openai");
 
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 app.get('/',(req,res)=>{
   res.send("Hello")
 });
